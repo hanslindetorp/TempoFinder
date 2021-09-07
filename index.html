@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tempofinder</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="jquery/jquery.mobile-1.4.4.css" />
+	<link rel="stylesheet" href="mystyle.css" />
+	<script src="jquery/jquery-latest.js"></script>
+	<script src="jquery/jquery.cookie.js"></script>
+	<script src="jquery/jquery.mobile-1.4.4.js"></script>
+	
+	<script src="js/data.js"></script>
+	<script src="js/ui.js"></script>
+</head>
+<body>
+
+
+
+<!-- WELCOME -->
+<div data-role="page" id="welcome-page">
+
+	<div data-role="header" data-position="fixed">
+		<h1>Tempofinder</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+			<h1>Welcome to Tempofinder!</h1>
+			<p>Find the best matching tempo for your hitpoints</p>
+			<ol>
+				<li>Set your ideal tempo, framerate etc</li>
+				<li>Add and edit your hitpoints</li>
+				<li>Get the best tempo matches</li>
+			</ol>
+			<p>Questions or comments? <a href="mailto: johan.ramstrom@kmh.se">johan.ramstrom@kmh.se</a></p>
+			<a href="#project-list-page" data-role="button">Get Started</a>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+		<h2>&copy; Hans Lindetorp &amp; Johan Ramström</h2>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- PROJECT LIST -->
+<div data-role="page" id="project-list-page">
+
+	<div data-role="header" data-position="fixed">
+		<a href="#welcome-page" data-icon="home" data-iconpos="notext" id="projectEditDoneBtn">Home</a>
+		<h1>Tempofinder</h1>
+		<a href="#project-settings-page" class="ui-btn-right" data-icon="plus" data-iconpos="notext" id="addProjectBtn">Add project</a>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+			
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+		
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- PROJECT EDIT -->
+<div data-role="page" id="project-edit-page">
+
+
+	<div data-role="header" data-position="fixed">
+		<a href="#project-list-page" data-icon="bars" data-iconpos="notext" id="projectEditDoneBtn">Back</a>
+		<h1>
+			<a href="#project-settings-page"><span class="projectNameLabel">Project Name</span></a>
+			<a href="#project-settings-page"><span class="tempoLabel">Tempo</span></a>
+			<a href="#project-settings-page"><span class="frameRateLabel">Fps</span></a>
+			</a>
+		</h1>
+		<a href="#project-settings-page" id="projectSettingsBtn" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Edit</a>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<ul data-role="listview" id="hitPoint-list"></ul>		
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed">
+	
+		<input type="xrange" name="tempo-slider" id="tempo-slider" value="60" min="30" max="300" step="0.1" />
+		<div class="match-result"></div>
+		
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+<!-- PROJECT SETTINGS -->
+
+<div data-role="page" id="project-settings-page">
+
+	<div data-role="header" data-position="fixed">
+		<a href="#project-edit-page" data-icon="check" data-iconpos="notext" class="ui-btn-icon-notext">Check</a>
+		<h1>Project Settings</h1>
+		<a href="#project-list-page" id="deleteProjectBtn" data-icon="minus" data-iconpos="notext" class="ui-btn-right">Delete</a>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<form action="#">
+			
+			<label for="projectName" class="ui-hidden-accessible">Project name:</label>
+			<input type="text" name="projectName" id="projectName" placeholder="Untitled project" value="">
+			
+
+			<label for="tempoSelect" class="select">Ideal Tempo</label>
+			<select name="tempoSelect" id="tempoSelect" class="tempoSelect">
+			
+			</select>
+			
+			
+			
+			<label for="frameRate" class="select">Frame Rate</label>
+			<select name="frameRate" id="frameRate">
+			    <option value="24">24 fps</option>
+			    <option value="25" selected>25 fps</option>
+			    <option value="30">30 fps</option>
+			</select>
+			
+			
+			<div class="subBeats">
+				<label for="subBeats" class="select">Sub Beats</label>
+				<select name="subBeats" id="subBeats">
+				    <option value="2">2 subbeats</option>
+				    <option value="3">3 subbeats</option>
+				    <option value="4">4 subbeats</option>
+				</select>
+			</div>
+
+		</form>
+		
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+		
+		
+	</div>
+</div>
+
+
+
+
+
+
+<!-- HIT POINT LIST -->
+
+<div data-role="page" id="hitPoint-list-page">
+
+	<div data-role="header" data-position="fixed">
+		<a href="#project-edit-page" data-icon="back" data-iconpos="notext" class="ui-btn-icon-notext">Back</a>
+		<h1>HitPoints</h1>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<ul data-role="listview" id="hitPoint-list"></ul>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+		
+		
+		<h4 class="match-instruction">Edit HitPoints to find matching tempo</h4>
+		<input type="xrange" name="tempo-slider" id="tempo-slider" value="60" min="30" max="300" step="0.1" />
+		<div class="match-result"></div>
+		
+		
+	</div>
+</div>
+
+
+
+
+
+<!-- HIT POINT EDIT -->
+
+<div data-role="page" id="hitPoint-edit-page">
+
+	<div data-role="header" data-position="fixed">
+		<a href="#project-edit-page" data-icon="check" data-iconpos="notext" id="hitPointEditDoneBtn">Check</a>
+		<h1>Edit HitPoint</h1>
+		<a href="#project-edit-page" id="deleteHitPointBtn" data-icon="minus" data-iconpos="notext" class="ui-btn-right">Delete</a>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		<form id="hitPoint-edit-form">
+			
+			<label for="hitPoint-name" class="ui-hidden-accessible">HitPoint name:</label>
+			<input type="text" name="hitPoint-name" id="hitPoint-name" placeholder="Untitled HitPoint" value="">
+
+		
+			<fieldset data-role="controlgroup" data-type="horizontal" id="hitPoint-time-picker"></fieldset>
+		
+		    <label for="hitPointImportant" class="switch">Important</label>
+		    <input type="checkbox" data-role="flipswitch" name="hitPointImportant" id="hitPointImportant">
+		    
+		    <div class="subBeats">
+			    <label for="hitPointAllowSubBeat" class="switch">Allow Sub Beat</label>
+			    <input type="checkbox" data-role="flipswitch" name="hitPointAllowSubBeat" id="hitPointAllowSubBeat">
+		    </div>
+		  
+			
+		</form>
+		
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+		
+		
+		<h4 class="match-instruction">Edit HitPoints to find matching tempo</h4>
+		<div class="match-result"></div>
+		
+		<!--h4 class="match-result">
+			<a href="#matches-list-page" id="allMatchesBtn" data-role="button" data-icon="carat-u" data-iconpos="notext">
+				OPEN</a>
+			<span>Best match:&nbsp;</span>
+			<span class="matchedTempo">90.6 bpm</span>
+			<span class="matchIndicatorContainer"><span class="matchIndicator"></span></span>
+			<span class="frameOffset">-3fr</span>
+		</h4-->	
+	</div>
+</div>
+
+
+
+
+<div data-role="page" id="matches-list-page">
+	<div data-role="header" data-position="fixed">
+	<a href="#" data-rel="back" data-icon="back" data-iconpos="notext" id="hitPointEditDoneBtn">Back</a>
+	<h1>Matched Tempos</h1>
+	</div>
+	
+	
+	<div role="main" class="ui-content">
+	<ul data-role="listview" id="all-matches-list"></ul>
+	</div>
+	  
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+	</div>
+	
+</div>
+
+
+
+
+</body>
+</html>

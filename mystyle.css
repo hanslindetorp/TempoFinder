@@ -1,0 +1,266 @@
+/* DEVELOPE */
+
+.subBeats {
+	display: none !important;
+}
+
+
+
+a {
+	cursor: hand;
+}
+
+/*
+#project-edit-page div[data-role="header"] h1::before {
+	
+	content: "Edit";
+	
+}
+
+#project-edit-page[data-edit-count="0"] div[data-role="header"] h1::before {
+	
+	content: "Create";
+	
+}
+
+#project-edit-page[data-edit-count="0"] #deleteProjectBtn {
+	
+	display: none;
+}
+
+*/
+
+.ui-page-theme-a .ui-bar-inherit {
+	background-color: #d7dae9;	
+}
+
+
+h1 > a > span {
+	
+	margin: 0 1em;
+	
+}
+
+.ui-header  .ui-title {
+	width: 100%;
+	margin: 0;
+}
+.ui-header .ui-title a {
+	text-decoration: none;
+	color: black;
+}
+
+.match {
+	vertical-align: middle;
+}
+
+.matchIndicator {
+	
+	position: absolute;
+	height: 100%;
+	width: 100px;
+	left: 0px;
+	background-image: url("img/star_icon.png");
+	background-position: left center;
+	background-repeat: repeat-x;
+	
+}
+
+.matchIndicatorContainer {
+	
+	margin: 0 0.5em;
+	display: inline-block;
+	position: relative;
+	height: 1em;
+	width: 7em;
+	
+}
+
+
+.match-instruction, .match-result {
+	
+	width: 90%;
+	margin-left: 10%;
+	text-align: center;
+	display: none;
+	
+}
+
+
+.match-result {
+	margin-top: 30px;
+
+}
+
+.match-result > span {
+	position: relative;
+	display: table-cell;
+	width: 30px;
+	height: 30px;
+}
+
+.match-result .mxOffset {
+	
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+
+.match-result > span > * {
+	position: absolute;	
+	border-radius: 50%;
+}
+
+
+
+.match-result > span > *:nth-child(1) {
+	background-color: #FF8080;
+}
+
+.match-result > span > *:nth-child(2) {
+	background-color: #FFEB99;
+}
+.match-result > span > *:nth-child(3) {
+	background-color: #CCFFB2;
+}
+.match-result > span > *:nth-child(4) {
+	width: 40px;
+	margin-left: -20px;
+	margin-top: -10px;
+	vertical-align: middle;
+	text-align: center;
+	background-color: rgba(255,255,255,0.5);
+	padding: 0.1em;
+	border-radius: 6px;
+	box-sizing: border-box;
+	font-size: 0.8em;
+	cursor: hand;
+}
+.match-result > span > .border {
+	border: 2px solid black;
+	box-sizing: border-box;
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	margin-top: -20px;
+	visibility: hidden;
+}
+
+
+.ui-footer {
+	box-sizing: border-box;
+}
+
+
+#hitPoint-list > li > a {
+	width: 100%;
+	box-sizing: border-box;
+	display: table;
+	border-collapse:separate;
+	border-spacing:5px 0px;
+	padding-left: 8px;
+}
+#hitPoint-list > li > a > span {
+	display: table-cell;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#hitPoint-list li:first-child {
+	/* Music Start */
+	border-bottom-style: solid;
+	border-bottom-width: 10px;
+	border-bottom-color: rgb(221,221,221);	
+}
+
+#hitPoint-list li:first-child .hitPoint-beat::after {
+	
+	content: "Beat";
+	font-size: 0.8em;
+	font-weight: normal;
+}
+
+#hitPoint-list li:first-child .hitPoint-diff-container::after {
+	
+	content: "Diff";
+	font-size: 0.8em;
+	font-weight: normal;
+}
+
+
+#project-edit-page .hitPoint-name {
+	width: 15%;
+	overflow: hidden;	
+}
+
+
+#project-edit-page .hitPoint-time {
+	padding-left: 1em;
+	font-weight: normal;
+	font-size: 0.8em;
+	float: right;
+}
+#project-edit-page .hitPoint-beat {
+	padding: 0em 0.2em;
+	background-color: #f0f0f0;
+	border-radius: 5px;
+	width: 15%;
+	text-align: right;
+	
+}
+#project-edit-page .hitPoint-diff-container {
+	vertical-align: top;
+	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 1.3em;
+	background-color: #f0f0f0;
+	border-radius: 5px;
+	margin: 0px 5px;
+	
+}
+#project-edit-page .hitPoint-diff {
+	position: absolute;
+	width: 15%;
+	min-width: 2.5em;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#project-edit-page *.important .hitPoint-diff[data-quality="good"] {
+	background-color: #CCFFB2;
+}
+
+#project-edit-page *.important .hitPoint-diff[data-quality="bad"] {
+	background-color: #FFEB99;
+}
+
+#project-edit-page *.important .hitPoint-diff[data-quality="miss"] {
+	background-color: #FF8080;
+}
+
+
+.ui-controlgroup-controls  {
+	
+	width: 100%;
+	
+}
+#hitPoint-time-picker .ui-controlgroup-controls > .ui-select {
+	
+	width: 25%;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 499px){
+	
+	#hitPoint-list li:first-child .hitPoint-name::after {
+		content: "Mx Start";
+	}
+}
+
+@media screen and (min-width: 500px){
+	
+	#hitPoint-list li:first-child .hitPoint-name::after {
+		content: "Music Start";
+	}
+}
